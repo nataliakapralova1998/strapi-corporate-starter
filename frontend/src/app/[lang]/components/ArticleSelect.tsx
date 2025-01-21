@@ -21,8 +21,8 @@ interface Article {
 
 function selectedFilter(current: string, selected: string) {
   return current === selected
-    ? "px-3 py-1 rounded-lg text-white hover:underline bg-primary"
-    : "px-3 py-1 rounded-lg text-white hover:underline bg-primary/80";
+    ? "px-3 py-1 rounded-lg text-white bg-primary"
+    : "px-3 py-1 rounded-lg text-white bg-primary/80";
 }
 
 export default function ArticleSelect({

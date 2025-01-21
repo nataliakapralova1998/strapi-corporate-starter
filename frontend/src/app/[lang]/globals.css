@@ -4,64 +4,57 @@
 @import "react-slideshow-image/dist/styles.css";
 
 @layer base {
-	:root {
+  :root {
     --background: #faf8f4; /* floral white cream */
-    --primary: 	rgb(139 92 246);   /* voilet */
+    --primary: rgb(139 92 246); /* voilet */
     --secondary: rgb(236 72 153); /* dark pink */
-    --text: #1e1e14;  /* raisin black */
-	}
+    --text: #1e1e14; /* raisin black */
+  }
 
-	:focus {
-		@apply outline-none;
-	}
+  :focus {
+    @apply outline-none;
+  }
 
-	:focus-visible,
-	.group-data-[focus-visible='true'] {
-		@apply outline outline-1 outline-offset-2 outline-current transition-all;
-	}
+  :focus-visible,
+  .group-data-[focus-visible="true"] {
+    @apply outline outline-1 outline-offset-2 outline-current transition-all;
+  }
 
-	html {
-		@apply scroll-smooth scroll-p-10;
-	}
+  html {
+    @apply scroll-smooth scroll-p-10;
+  }
 
-	body {
-		@apply text-text bg-background antialiased;
-	}
+  body {
+    @apply text-text bg-background antialiased;
+  }
 
-	h1,
-	h2,
-	h3,
-	h4 
-	 {
-		@apply font-bold;
-	}
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold;
+  }
 
-	h1
-{
-		@apply text-4xl md:text-6xl;
-	}
+  h1 {
+    @apply text-4xl md:text-6xl;
+  }
 
-	h2
-	{
-		@apply text-3xl md:text-4xl;
-	}
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
 
-	h3
-	 {
-		@apply text-2xl md:text-2xl;
-	}
+  h3 {
+    @apply text-2xl md:text-2xl;
+  }
 
-	h4{
-		@apply text-xl;
-	}
-   
-   p {
+  h4 {
+    @apply text-xl;
+  }
+
+  p {
     @apply text-base;
-   }
-  
-
+  }
 }
-
 
 /******************************************* 
   Rich Text Styles
@@ -174,7 +167,7 @@
 
 /* Custom containers */
 .rich-text .warning {
-  @apply  px-4 py-2 rounded-lg mb-4;
+  @apply px-4 py-2 rounded-lg mb-4;
 }
 
 /******************************************* 

@@ -3,7 +3,8 @@
   "info": {
     "name": "LargeVideo",
     "displayName": "Large video",
-    "icon": "play-circle"
+    "icon": "play-circle",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,21 +14,16 @@
     "description": {
       "type": "string"
     },
-    "video": {
-      "allowedTypes": [
-        "videos"
-      ],
+    "poster": {
       "type": "media",
       "multiple": false,
-      "required": true
-    },
-    "poster": {
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": false
+      ]
+    },
+    "videoUrl": {
+      "type": "string"
     }
   }
 }

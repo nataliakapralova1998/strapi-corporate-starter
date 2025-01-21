@@ -9,7 +9,7 @@ interface RichTextProps {
 
 export default function RichText({ data }: RichTextProps) {
   return (
-    <section className="rich-text py-6 text-text ">
+    <section className="rich-text py-6 text-text">
       <Markdown children={data.body} remarkPlugins={[remarkGfm]} />
     </section>
   );

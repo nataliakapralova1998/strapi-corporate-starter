@@ -1,10 +1,11 @@
 "use client";
-import Logo from "./Logo";
+import Logo from "./atoms/Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import AnimatedLink from "./atoms/AnimatedLink";
 
 interface NavLink {
   id: number;
@@ -18,19 +19,11 @@ interface MobileNavLink extends NavLink {
 }
 
 function NavLink({ url, text }: NavLink) {
-  const path = usePathname();
-
   return (
-    <li className="flex">
-      <Link
-        href={url}
-        className={`flex items-center mx-4 -mb-1 border-b-2 border-transparent ${
-          path === url && "text-primary/80 border-primary/40"
-        }}`}
-      >
-        {text}
-      </Link>
-    </li>
+    <AnimatedLink
+      url={url}
+      text={text}
+    />
   );
 }
 

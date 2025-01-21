@@ -1,6 +1,6 @@
 import PageHeader from "../PageHeader";
 import Container from "../atoms/Container";
-import PlanCard, { Plan } from "../molecules/PlanCard";
+import PlanCard, { Plan } from "../PlanCard";
 
 interface PriceProps {
   data: {
