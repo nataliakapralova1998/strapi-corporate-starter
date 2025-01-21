@@ -816,7 +816,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     blocks: Attribute.DynamicZone<
       [
         'shared.media',
-        'shared.quote',
         'shared.rich-text',
         'shared.slider',
         'shared.video-embed'
@@ -1056,16 +1055,12 @@ export interface ApiPagePage extends Schema.CollectionType {
     contentSections: Attribute.DynamicZone<
       [
         'sections.hero',
-        'sections.bottom-actions',
-        'sections.feature-columns-group',
-        'sections.feature-rows-group',
         'sections.testimonials-group',
         'sections.large-video',
-        'sections.rich-text',
         'sections.pricing',
         'sections.lead-form',
         'sections.features',
-        'sections.heading'
+        'sections.text-image'
       ]
     > &
       Attribute.SetPluginOptions<{
