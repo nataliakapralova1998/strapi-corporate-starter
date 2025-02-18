@@ -42,6 +42,7 @@ export default function Hero({ data }: HeroProps) {
                   key={button.id}
                   text={button.text}
                   type={button.type}
+                  className="w-fit"
                   onClick={() =>
                     window.open(button.url, button.newTab ? "_blank" : "_self")
                   }

@@ -7,12 +7,16 @@
 const populate = {
   contentSections: {
     populate: {
+      __component: "*",
+      files: "*",
+      file: "*",
       picture: {
         fields: ["url", "alternativeText", "caption", "width", "height"],
       },
       buttons: {
         populate: true,
       },
+      richText: { populate: { fields: ["body"] } },
       feature: {
         populate: {
           fields: ["title", "description", "showLink", "newTab", "url", "text"],
@@ -39,7 +43,7 @@ const populate = {
   seo: {
     fields: ["metaTitle", "metaDescription"],
     populate: { shareImage: true },
-  }
+  },
 };
 
 module.exports = (config, { strapi }) => {

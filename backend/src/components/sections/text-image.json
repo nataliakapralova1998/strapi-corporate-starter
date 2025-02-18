@@ -7,24 +7,31 @@
   },
   "options": {},
   "attributes": {
-    "text": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.rich-text"
+    "textLeft": {
+      "type": "boolean",
+      "default": true
     },
-    "image": {
+    "title": {
+      "type": "string"
+    },
+    "picture": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": [
-        "images"
+        "images",
+        "files",
+        "videos",
+        "audios"
       ]
     },
-    "textLeft": {
-      "type": "boolean"
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.button-link"
     },
-    "title": {
-      "type": "string"
+    "text": {
+      "type": "richtext"
     }
   }
 }

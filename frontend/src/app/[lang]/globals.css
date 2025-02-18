@@ -5,9 +5,9 @@
 
 @layer base {
   :root {
-    --background: #faf8f4; /* floral white cream */
     --primary: rgb(139 92 246); /* voilet */
     --secondary: rgb(236 72 153); /* dark pink */
+    --background: #faf8f4; /* floral white cream */
     --text: #1e1e14; /* raisin black */
   }
 
@@ -36,11 +36,11 @@
   }
 
   h1 {
-    @apply text-4xl md:text-6xl;
+    @apply text-6xl;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl;
+    @apply text-4xl lg:text-5xl;
   }
 
   h3 {

@@ -11,7 +11,7 @@ export default function PageHeader({ heading, text }: PageHeaderProps) {
           {text}
         </span>
       )}
-      <h2 className="text-4xl font-bold lg:text-5xl">{heading}</h2>
+      <h2>{heading}</h2>
     </div>
   );
 }

@@ -1060,7 +1060,9 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.pricing',
         'sections.lead-form',
         'sections.features',
-        'sections.text-image'
+        'sections.text-image',
+        'shared.rich-text',
+        'shared.slider'
       ]
     > &
       Attribute.SetPluginOptions<{
