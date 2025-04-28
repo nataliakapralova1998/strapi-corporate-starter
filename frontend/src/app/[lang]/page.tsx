@@ -3,6 +3,8 @@ import componentResolver from './utils/component-resolver';
 import {getPageBySlug} from "@/app/[lang]/utils/get-page-by-slug";
 
 
+export const dynamic = 'force-dynamic'
+
 export default async function RootRoute({params}: { params: { lang: string } }) {
     try {
       const page = await getPageBySlug('home', params.lang)

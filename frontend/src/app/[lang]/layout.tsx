@@ -9,8 +9,6 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { FALLBACK_SEO } from "@/app/[lang]/utils/constants";
 
-export const dynamic = 'force-dynamic'
-
 async function getGlobal(lang: string): Promise<any> {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
