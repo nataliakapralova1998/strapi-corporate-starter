@@ -33,17 +33,15 @@ function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
     closeMenu();
   };
   return (
-    <a className="flex">
-      <Link
-        href={url}
-        onClick={handleClick}
-        className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-text hover:bg-text ${
-          path === url && "text-primary/80 border-primary/40"
-        }}`}
-      >
-        {text}
-      </Link>
-    </a>
+    <Link
+      href={url}
+      onClick={handleClick}
+      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-text hover:bg-text ${
+        path === url && "text-primary/80 border-primary/40"
+      }}`}
+    >
+      {text}
+    </Link>
   );
 }
 
@@ -61,7 +59,7 @@ export default function Navbar({
     setMobileMenuOpen(false);
   };
   return (
-    <div className="p-4 text-text">
+    <div className="p-4 text-text" data-testid="navbar">
       <div className="container flex justify-between h-16 mx-auto px-0 sm:px-6">
         <Logo src={logoUrl}>
           {logoText && <h2 className="text-2xl font-bold">{logoText}</h2>}
