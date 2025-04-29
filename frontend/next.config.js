@@ -2,6 +2,7 @@
 
 const nextConfig = {
   images: {
+    domains: ['cms.nk-webcreations.com'],
     remotePatterns: [
       {
         protocol: 'http',
