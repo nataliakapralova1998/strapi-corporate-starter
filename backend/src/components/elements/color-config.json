@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_elements_color_configs",
+  "info": {
+    "displayName": "Color Config",
+    "description": "Website color configuration"
+  },
+  "options": {},
+  "attributes": {
+    "primary": {
+      "type": "string",
+      "required": true,
+      "default": "#000000"
+    },
+    "secondary": {
+      "type": "string",
+      "required": true,
+      "default": "#ffffff"
+    },
+    "accent": {
+      "type": "string",
+      "required": true,
+      "default": "#0066cc"
+    },
+    "background": {
+      "type": "string",
+      "required": true,
+      "default": "#ffffff"
+    },
+    "text": {
+      "type": "string",
+      "required": true,
+      "default": "#000000"
+    },
+    "muted": {
+      "type": "string",
+      "required": true,
+      "default": "#666666"
+    }
+  }
+} 
