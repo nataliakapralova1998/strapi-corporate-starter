@@ -29,6 +29,7 @@
       "type": "dynamiczone",
       "components": [
         "sections.hero",
+        "sections.avatar-hero",
         "sections.testimonials-group",
         "sections.large-video",
         "sections.pricing",
@@ -36,7 +37,8 @@
         "sections.features",
         "sections.text-image",
         "shared.rich-text",
-        "shared.slider"
+        "shared.slider",
+        "shared.image"
       ],
       "pluginOptions": {
         "i18n": {

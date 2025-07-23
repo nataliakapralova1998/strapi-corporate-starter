@@ -71,6 +71,16 @@
         }
       },
       "component": "layout.footer"
+    },
+    "colors": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.color-config",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

@@ -1,31 +1,20 @@
 "use client";
 import { useState } from "react";
 import { getStrapiURL } from "../utils/api-helpers";
+import { ArrowRight } from "lucide-react";
 
 export default function FormSubmit({
   placeholder,
-  text,
 }: {
   placeholder: string;
-  text: string;
+  text?: string;
 }) {
   const [email, setEmail] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const token = process.env.NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN;
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  async function handleSubmit() {
-    if (email === "") {
-      setErrorMessage("Email cannot be blank.");
-      return;
-    }
-
-    if (!emailRegex.test(email)) {
-      setErrorMessage("Invalid email format.");
-      return;
-    }
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault(); // voorkom page reload
 
     const res = await fetch(getStrapiURL() + "/api/lead-form-submissions", {
       method: "POST",
@@ -37,48 +26,39 @@ export default function FormSubmit({
     });
 
     if (!res.ok) {
-      setErrorMessage("Email failed to submit.");
       return;
     }
-    setErrorMessage("");
+
     setSuccessMessage("Email successfully submitted!");
     setEmail("");
   }
 
   return (
-    <div className="flex flex-row items-center self-center justify-center flex-shrink-0 shadow-md lg:justify-end">
-      <div className="flex flex-col">
-        <div className="flex flex-row">
-          {successMessage ? (
-            <p className="text-green-700 bg-green-300 px-4 py-2 rounded-lg">
-              {successMessage}
-            </p>
-          ) : (
-            <>
-              <input
-                type="email"
-                placeholder={errorMessage || placeholder}
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                className={"w-3/5 p-3 rounded-l-lg sm:w-2/3 text-gray-700"}
-              />
-              <button
-                type="button"
-                className="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3  bg-primary  text-white"
-                onClick={handleSubmit}
-              >
-                {text}
-              </button>
-            </>
-          )}
+    <form
+      onSubmit={handleSubmit}
+      className="w-full max-w-md mx-auto mt-6 flex flex-col gap-4"
+    >
+      {successMessage ? (
+        <p>{successMessage}</p>
+      ) : (
+        <div className="flex border-b border-gray-800">
+          <input
+            type="email"
+            required
+            placeholder={placeholder}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="flex-1 bg-transparent border-none focus:outline-none px-2 py-3 text-lg"
+          />
+          <button
+            type="submit"
+            className="p-3 hover:text-primary transition"
+            aria-label="Submit email"
+          >
+            <ArrowRight />
+          </button>
         </div>
-
-        {errorMessage && (
-          <p className="text-red-500 bg-red-200 px-4 py-2 rounded-lg my-2">
-            {errorMessage}
-          </p>
-        )}
-      </div>
-    </div>
+      )}
+    </form>
   );
 }

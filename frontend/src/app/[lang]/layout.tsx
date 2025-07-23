@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { getStrapiMedia, getStrapiURL } from "./utils/api-helpers";
 import { fetchAPI } from "./utils/fetch-api";
-
 import { i18n } from "../../../i18n-config";
-// import Banner from "./components/molecules/Banner";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import { getColorVariables } from "./utils/colors";
 import { FALLBACK_SEO } from "@/app/[lang]/utils/constants";
+import { EB_Garamond, Manrope } from "next/font/google";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
 async function getGlobal(lang: string): Promise<any> {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
@@ -31,6 +32,7 @@ async function getGlobal(lang: string): Promise<any> {
       "footer.legalLinks",
       "footer.socialLinks",
       "footer.categories",
+      "colors",
     ],
     locale: lang,
   };
@@ -58,6 +60,20 @@ export async function generateMetadata({
   };
 }
 
+export const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-eb-garamond",
+  display: "swap",
+});
+
+export const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  weight: ['400', '500', '700'], // pas aan wat je nodig hebt
+  display: 'swap',
+});
+
 export default async function RootLayout({
   children,
   params,
@@ -69,7 +85,7 @@ export default async function RootLayout({
   // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;
 
-  const { notificationBanner, navbar, footer } = global.data.attributes;
+  const { notificationBanner, navbar, footer, colors } = global.data.attributes;
 
   const navbarLogoUrl = getStrapiMedia(
     navbar.navbarLogo.logoImg.data?.attributes.url
@@ -79,9 +95,23 @@ export default async function RootLayout({
     footer.footerLogo.logoImg.data?.attributes.url
   );
 
+  // Get color variables for inline styles
+  const colorVariables = colors ? getColorVariables(colors) : {};
+
+  const colorStyles = Object.entries(colorVariables)
+    .map(([key, value]) => `${key}: ${value};`)
+    .join("\n");
+
   return (
-    <html lang={params.lang}>
-      <body className="bg-floralwhite">
+    <html lang={params.lang} className={`${ebGaramond.variable} ${manrope.variable}`}>
+      <head>
+        <style>{`
+          :root {
+            ${colorStyles}
+          }
+        `}</style>
+      </head>
+      <body>
         <Navbar
           links={navbar.links}
           logoUrl={navbarLogoUrl}
@@ -89,10 +119,8 @@ export default async function RootLayout({
         />
 
         <main className="mb-4 md:mb-12">
-          <div className=" flex flex-col gap-4 md:gap-12"> {children} </div>
+          <div className="flex flex-col">{children}</div>
         </main>
-
-        {/* <Banner data={notificationBanner} /> */}
 
         <Footer
           logoUrl={footerLogoUrl}

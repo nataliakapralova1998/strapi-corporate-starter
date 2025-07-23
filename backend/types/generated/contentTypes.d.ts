@@ -970,6 +970,12 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
           localized: true;
         };
       }>;
+    colors: Attribute.Component<'elements.color-config'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1055,6 +1061,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     contentSections: Attribute.DynamicZone<
       [
         'sections.hero',
+        'sections.avatar-hero',
         'sections.testimonials-group',
         'sections.large-video',
         'sections.pricing',
@@ -1062,7 +1069,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.features',
         'sections.text-image',
         'shared.rich-text',
-        'shared.slider'
+        'shared.slider',
+        'shared.image'
       ]
     > &
       Attribute.SetPluginOptions<{
