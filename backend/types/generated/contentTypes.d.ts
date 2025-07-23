@@ -1068,6 +1068,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.lead-form',
         'sections.features',
         'sections.text-image',
+        'sections.blog-articles',
         'shared.rich-text',
         'shared.slider',
         'shared.image'

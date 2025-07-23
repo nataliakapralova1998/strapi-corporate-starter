@@ -9,6 +9,7 @@ import TextImage from "./TextImage";
 import RichText from "./RichText";
 import Slider from "./Slider";
 import Image from "./Image";
+import BlogArticles from "./BlogArticles";
 
 interface Picture {
   data: {
@@ -53,15 +54,16 @@ const componentMap = {
   "sections.lead-form": LeadForm,
   "sections.features": Features,
   "sections.text-image": TextImage,
+  "sections.blog-articles": BlogArticles,
   "shared.rich-text": RichText,
   "shared.slider": Slider,
   "shared.image": Image,
+  
 } as const;
 
 type ComponentKey = keyof typeof componentMap;
 
 export default function FlexContent({ sections }: FlexContentProps) {
-  console.log(sections, 'hoiiii');
   return (
     <>
       {sections.map((section, index) => {
