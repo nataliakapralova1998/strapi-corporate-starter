@@ -76,16 +76,6 @@ export const getColorVariables = (colors: ColorConfig) => {
   const rgbText = formatRgb(colors.text);
   const rgbMuted = formatRgb(colors.muted);
 
-  // Log the conversions for debugging
-  console.log('Color conversions:', {
-    primary: { hex: colors.primary, rgb: rgbPrimary },
-    secondary: { hex: colors.secondary, rgb: rgbSecondary },
-    accent: { hex: colors.accent, rgb: rgbAccent },
-    background: { hex: colors.background, rgb: rgbBackground },
-    text: { hex: colors.text, rgb: rgbText },
-    muted: { hex: colors.muted, rgb: rgbMuted },
-  });
-
   return {
     // CMS color variables
     '--color-primary': colors.primary,

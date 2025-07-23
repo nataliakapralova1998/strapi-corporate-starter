@@ -30,7 +30,7 @@ interface HeroProps {
 export default function Hero({ data }: HeroProps) {
   const imgUrl = getStrapiMedia(data.picture.data.attributes.url);
   return (
-    <Container className="mt-16">
+    <Container className="my-16">
       <Row className="gap-12 md:gap-6">
         <div className="col-span-full lg:col-span-5 lg:col-start-2">
           <div className="space-y-8">

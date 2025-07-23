@@ -1,10 +1,10 @@
 {
-  "collectionName": "components_slices_heroes",
+  "collectionName": "components_sections_avatar_heroes",
   "info": {
-    "name": "Hero",
-    "displayName": "Hero",
-    "icon": "heading",
-    "description": ""
+    "name": "Avatar Hero",
+    "displayName": "Avatar Hero",
+    "icon": "user",
+    "description": "A hero section with an avatar image"
   },
   "options": {},
   "attributes": {
@@ -16,7 +16,7 @@
       "type": "text",
       "required": true
     },
-    "picture": {
+    "avatar": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -30,4 +30,4 @@
       "component": "links.button-link"
     }
   }
-}
+} 

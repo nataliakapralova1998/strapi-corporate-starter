@@ -14,13 +14,13 @@ export interface ButtonValues {
 export function renderButtonStyle(type: string) {
   switch (type) {
     case "primary":
-      return "bg-primary/80 hover:bg-primary text-white";
+      return "bg-black/80 text-white hover:bg-black";
     case "secondary":
-      return "border-2 border-primary text-primary";
+      return "border border-black text-black bg-white hover:bg-black hover:text-white";
     case "bordered-light":
-      return "border-2 border-white text-white";
+      return "border-2 border-white text-white hover:bg-white hover:text-black";
     default:
-      return "bg-primary/80 hover:bg-primary text-white";
+      return "bg-black/80 text-white hover:bg-black";
   }
 }
 
@@ -35,7 +35,7 @@ const Button: React.FC<ButtonValues> = ({
       onClick={onClick}
       className={`${renderButtonStyle(
         type
-      )} px-8 py-3 text-lg font-semibold rounded w-full ${className} `}
+      )} px-3 lg:px-8 py-3 text-base font-medium tracking-widest uppercase rounded-full transition-colors duration-300 ${className}`}
     >
       {text}
     </button>

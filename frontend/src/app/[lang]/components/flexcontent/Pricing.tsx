@@ -12,7 +12,7 @@ interface PriceProps {
 
 export default function Pricing({ data }: PriceProps) {
   return (
-    <section className="bg-text text-white py-12 lg:py-24">
+    <section className="bg-accent text-white py-12 lg:py-24">
       <Container>
         <PageHeader heading={data.title} text="Pricing" />
         <div className="flex flex-wrap items-stretch max-w-6xl mt-12 mx-auto">

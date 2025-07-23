@@ -36,18 +36,18 @@
   }
 
   body {
-    @apply text-text bg-background antialiased;
+    @apply text-text bg-background antialiased font-manrope;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-bold;
+    @apply font-bold font-garamond text-text;
   }
 
   h1 {
-    @apply text-6xl;
+    @apply text-5xl lg:text-6xl;
   }
 
   h2 {
@@ -63,7 +63,7 @@
   }
 
   p {
-    @apply text-base;
+    @apply text-base text-text;
   }
 }
 

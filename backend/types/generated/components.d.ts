@@ -62,6 +62,19 @@ export interface SharedMedia extends Schema.Component {
   };
 }
 
+export interface SharedImage extends Schema.Component {
+  collectionName: 'components_shared_image';
+  info: {
+    displayName: 'Image';
+    icon: 'image';
+    description: 'Full width image with optional button';
+  };
+  attributes: {
+    media: Attribute.Media<'images'> & Attribute.Required;
+    button: Attribute.Component<'links.button-link'>;
+  };
+}
+
 export interface SectionsTextImage extends Schema.Component {
   collectionName: 'components_sections_text_image_s';
   info: {
@@ -72,6 +85,7 @@ export interface SectionsTextImage extends Schema.Component {
   attributes: {
     textLeft: Attribute.Boolean & Attribute.DefaultTo<true>;
     title: Attribute.String;
+    subtitle: Attribute.String;
     picture: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     buttons: Attribute.Component<'links.button-link', true>;
     text: Attribute.RichText;
@@ -149,7 +163,7 @@ export interface SectionsHero extends Schema.Component {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    description: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
     picture: Attribute.Media<'images'> & Attribute.Required;
     buttons: Attribute.Component<'links.button-link', true>;
   };
@@ -215,6 +229,22 @@ export interface SectionsBottomActions extends Schema.Component {
     title: Attribute.String;
     buttons: Attribute.Component<'links.button-link', true>;
     description: Attribute.Text;
+  };
+}
+
+export interface SectionsAvatarHero extends Schema.Component {
+  collectionName: 'components_sections_avatar_heroes';
+  info: {
+    name: 'Avatar Hero';
+    displayName: 'Avatar Hero';
+    icon: 'user';
+    description: 'A hero section with an avatar image';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    avatar: Attribute.Media<'images'> & Attribute.Required;
+    buttons: Attribute.Component<'links.button-link', true>;
   };
 }
 
@@ -502,6 +532,7 @@ declare module '@strapi/types' {
       'shared.seo': SharedSeo;
       'shared.rich-text': SharedRichText;
       'shared.media': SharedMedia;
+      'shared.image': SharedImage;
       'sections.text-image': SectionsTextImage;
       'sections.testimonials-group': SectionsTestimonialsGroup;
       'sections.pricing': SectionsPricing;
@@ -513,6 +544,7 @@ declare module '@strapi/types' {
       'sections.feature-rows-group': SectionsFeatureRowsGroup;
       'sections.feature-columns-group': SectionsFeatureColumnsGroup;
       'sections.bottom-actions': SectionsBottomActions;
+      'sections.avatar-hero': SectionsAvatarHero;
       'meta.metadata': MetaMetadata;
       'links.social-link': LinksSocialLink;
       'links.link': LinksLink;

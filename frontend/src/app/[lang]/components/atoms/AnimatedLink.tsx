@@ -11,7 +11,7 @@ const AnimatedLink: React.FC<AnimatedLinkProps> = ({ url, text, customClassName 
   return (
       <Link href={url} className={`relative inline-block group py-1 font-semibold ${customClassName}`}>
         {/* Link Text */}
-        <span className="relative z-10 text-primary">{text}</span>
+        <span className="relative z-10 text-secondary">{text}</span>
 
         {/* Default underline */}
         <span className="absolute left-0 bottom-0 w-full rounded h-1 bg-transparent"></span>

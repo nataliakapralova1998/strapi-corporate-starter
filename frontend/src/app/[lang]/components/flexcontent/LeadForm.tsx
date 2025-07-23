@@ -13,15 +13,16 @@ interface EmailProps {
 }
 
 export default function Email({ data }: { data: EmailProps }) {
-
   return (
-    <section className="py-12 lg:py-24 bg-text text-white">
-      <Container className="flex flex-col justify-center p-4 space-y-8 md:p-10 lg:space-y-0 lg:space-x-12 lg:justify-between lg:flex-row">
-        <div className="flex flex-col space-y-4 text-center lg:text-left">
-          <h1 className="text-5xl font-bold leading-none">{data.title}</h1>
-          <p className="text-lg font-bold tracking-wider uppercase text-primary">{data.description}</p>
+    <section className="bg-[#eae6df] py-16">
+      <Container>
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="text-4xl font-serif font-semibold text-gray-800 mb-4">
+            {data.title}
+          </h2>
+          <p className="text-lg text-gray-600 mb-10">{data.description}</p>
+          <FormSubmit placeholder={data.emailPlaceholder} />
         </div>
-        <FormSubmit placeholder={data.emailPlaceholder} text={data.submitButton.text} />
       </Container>
     </section>
   );

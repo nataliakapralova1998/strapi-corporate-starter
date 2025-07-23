@@ -10,6 +10,10 @@ const populate = {
       __component: "*",
       files: "*",
       file: "*",
+      media: "*",
+      button: {
+        fields: ["text", "url", "type", "newTab"]
+      },
       picture: {
         fields: ["url", "alternativeText", "caption", "width", "height"],
       },
@@ -54,8 +58,6 @@ module.exports = (config, { strapi }) => {
       filters: { slug: ctx.query.filters.slug },
       locale: ctx.query.locale,
     };
-
-    console.log("page-populate-middleware.js: ctx.query = ", ctx.query);
 
     await next();
   };

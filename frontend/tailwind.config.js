@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        garamond: ["var(--font-eb-garamond)"],
+        manrope: ['var(--font-manrope)', 'sans-serif'],
+      },
       colors: {
         background: "rgb(var(--background) / <alpha-value>)",
         primary: "rgb(var(--primary) / <alpha-value>)",
@@ -15,6 +19,7 @@ module.exports = {
       },
       animation: {
         "pulse-vertical": "pulse-vertical 2s ease-in-out infinite",
+        "slide-in": "slide-in 0.8s ease-out forwards",
       },
       keyframes: {
         "pulse-vertical": {
@@ -28,8 +33,11 @@ module.exports = {
             transform: "translateY(0)",
           },
         },
+        "slide-in": {
+          "0%": { transform: "translateY(100%)", opacity: "0" },
+          "100%": { transform: "translateY(1%)", opacity: "1" },
+        },
       },
-      
     },
   },
   plugins: [],

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_shared_image",
+  "info": {
+    "displayName": "Image",
+    "icon": "image",
+    "description": "Full width image with optional button"
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "type": "media",
+      "allowedTypes": ["images"],
+      "multiple": false,
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "required": false,
+      "component": "links.button-link"
+    }
+  }
+}
