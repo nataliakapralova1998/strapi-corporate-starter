@@ -6,6 +6,7 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import Button from "./atoms/Button";
+import NavigationLink from "./atoms/NavigationLink";
 
 interface NavLink {
   id: number;
@@ -18,28 +19,23 @@ interface MobileNavLink extends NavLink {
   closeMenu: () => void;
 }
 
-function stripLocale(path: string) {
-  // Haal '/en' of '/nl' van het begin van de URL af
-  return path.replace(/^\/(en|nl)(?=\/|$)/, "");
-}
+// function NavLinkItem({ url, text }: NavLink) {
+//   const path = usePathname();
+//   const currentPath = stripLocale(path || "");
+//   const normalizedUrl = url.replace(/\/$/, "");
 
-function NavLinkItem({ url, text }: NavLink) {
-  const path = usePathname();
-  const currentPath = stripLocale(path || "");
-  const normalizedUrl = url.replace(/\/$/, "");
-
-  const isActive = currentPath === normalizedUrl;
-  return (
-    <Link
-      href={url}
-      className={`relative text-text text-sm font-light pb-1 ${
-        isActive ? "border-b border-text" : "border-none"
-      }`}
-    >
-      {text}
-    </Link>
-  );
-}
+//   const isActive = currentPath === normalizedUrl;
+//   return (
+//     <Link
+//       href={url}
+//       className={`relative text-text text-sm font-light pb-1 ${
+//         isActive ? "border-b border-text" : "border-none"
+//       }`}
+//     >
+//       {text}
+//     </Link>
+//   );
+// }
 
 function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
   const path = usePathname();
@@ -96,7 +92,7 @@ export default function Navbar({
           <ul className="items-stretch hidden space-x-6 lg:flex">
             {links.map((item: NavLink) => (
               <li key={item.id}>
-                <NavLinkItem {...item} />
+                <NavigationLink {...item} />
               </li>
             ))}
           </ul>

@@ -68,7 +68,7 @@
   }
 
   p {
-    @apply text-base text-text;
+    @apply text-[15px] leading-relaxed text-text;
   }
 }
 
