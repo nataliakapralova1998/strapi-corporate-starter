@@ -5,21 +5,26 @@
 
 @layer base {
   :root {
-    /* Default colors that will be overridden by CMS values */
-    --color-primary: rgb(139 92 246); /* violet */
-    --color-secondary: rgb(236 72 153); /* dark pink */
-    --color-accent: rgb(139 92 246); /* violet */
-    --color-background: #faf8f4; /* floral white cream */
-    --color-text: #1e1e14; /* raisin black */
-    --color-muted: #666666;
-
-    /* RGB values for Tailwind opacity support */
-    --primary: 139 92 246;
-    --secondary: 236 72 153;
-    --accent: 139 92 246;
-    --background: 250 248 244;
-    --text: 30 30 20;
-    --muted: 102 102 102;
+    :root {
+      /* Semantic HEX values for CSS usage */
+      --color-primary: #8b5cf6;
+      --color-secondary: #ffAEBC;
+      --color-accent: #a0e7e5;
+      --color-background: #faf8f4;
+      --color-surface: #ffffff;
+      --color-text: #1e1e14;
+      --color-muted: #666666;
+    
+      /* RGB values (no commas) for Tailwind opacity support */
+      --primary: 139 92 246;
+      --secondary: 255 174 188;
+      --accent: 160 231 229;
+      --background: 250 248 244;
+      --surface: 255 255 255;
+      --text: 30 30 20;
+      --muted: 102 102 102;
+    }
+    
   }
 
   :focus {
