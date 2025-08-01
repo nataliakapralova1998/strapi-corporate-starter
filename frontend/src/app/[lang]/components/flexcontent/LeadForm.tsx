@@ -20,7 +20,7 @@ export default function Email({ data }: { data: EmailProps }) {
           <h2 className="text-4xl font-serif font-semibold text-gray-800 mb-4">
             {data.title}
           </h2>
-          <p className="text-lg text-gray-600 mb-10">{data.description}</p>
+          <p className="mb-10">{data.description}</p>
           <FormSubmit placeholder={data.emailPlaceholder} />
         </div>
       </Container>

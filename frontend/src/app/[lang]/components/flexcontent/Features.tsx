@@ -25,7 +25,7 @@ interface Feature {
 
 function Feature({ title, description, showLink, newTab, url, text }: Feature) {
   return (
-    <Stack alignItems="items-center" justifyContent="justify-center">
+    <Stack >
       <h3>{title}</h3>
       <p>{description}</p>
       {showLink && url && text && (

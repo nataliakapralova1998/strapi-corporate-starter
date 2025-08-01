@@ -26,7 +26,7 @@ export default function BlogArticles({ data }: BlogArticlesProps) {
     <section className="bg-accent py-12 md:py-24">
       <Container>
         <div className="flex items-center justify-between mb-10">
-          <h3 className="max-w-48 lg:max-w-full">{data.title}</h3>
+          <h3 className="max-w-60 lg:max-w-full">{data.title}</h3>
           {data.linkText && data.linkUrl && (
             <Link className="font-semibold" href={data.linkUrl}>
               {data.linkText}
