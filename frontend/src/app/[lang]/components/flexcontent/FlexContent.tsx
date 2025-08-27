@@ -10,6 +10,9 @@ import RichText from "./RichText";
 import Slider from "./Slider";
 import Image from "./Image";
 import BlogArticles from "./BlogArticles";
+import Faq from "./FAQ";
+
+
 
 interface Picture {
   data: {
@@ -55,6 +58,7 @@ const componentMap = {
   "sections.features": Features,
   "sections.text-image": TextImage,
   "sections.blog-articles": BlogArticles,
+  "sections.faq": Faq,
   "shared.rich-text": RichText,
   "shared.slider": Slider,
   "shared.image": Image,

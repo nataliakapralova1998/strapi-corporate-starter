@@ -33,7 +33,9 @@ const populate = {
           fields: ["body"],
         },
       },
-
+      faq_items: {
+        populate: true,
+      },
       // Media (unified)
       picture: mediaWithFields(),
       blogs: {

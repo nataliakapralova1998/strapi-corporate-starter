@@ -4,6 +4,7 @@ import { getStrapiMedia } from "../../utils/api-helpers";
 import Button, { ButtonValues } from "../atoms/Button";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import PageHeader from "../PageHeader";
 
 interface TextImageProps {
   data: {
@@ -34,8 +35,8 @@ export default function TextImage({ data }: TextImageProps) {
     <section className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div
-          className={`relative w-full order-1 lg:order-${
-            data.textLeft ? "1" : "2"
+          className={`relative w-full ${
+            data.textLeft ? "order-1 lg:order-1" : "order-1 lg:order-2"
           }`}
         >
           <div className="relative block lg:hidden aspect-[4/3] w-full">
@@ -57,18 +58,13 @@ export default function TextImage({ data }: TextImageProps) {
           </div>
         </div>
         <div
-          className={`flex items-center order-2 lg:order-${
-            data.textLeft ? "2" : "1"
+          className={`flex items-center ${
+            data.textLeft ? "order-2 lg:order-2" : "order-2 lg:order-1"
           }`}
         >
           <div className="py-12 px-5 lg:py-32 lg:px-16">
-            {data.subtitle && (
-              <span className="text-sm text-primary uppercase tracking-widest mb-2">
-                {data.subtitle}
-              </span>
-            )}
-            <h2 className="mb-6">{data.title}</h2>
-            <div className="mb-6">
+            <PageHeader heading={data.title} text={data.subtitle} />
+            <div className="my-6">
               <Markdown remarkPlugins={[remarkGfm]}>{data.text}</Markdown>
             </div>
             <div className="flex flex-col sm:flex-row sm:gap-4">
