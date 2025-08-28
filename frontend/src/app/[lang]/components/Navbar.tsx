@@ -85,11 +85,11 @@ export default function Navbar({
       }`}
       data-testid="navbar"
     >
-      <div className="flex justify-between items-center h-16 mx-auto px-6">
+      <div className="flex justify-between items-center h-20 mx-auto px-6">
         <Logo src={logoUrl} />
 
         <div className="items-center flex-shrink-0 hidden lg:flex">
-          <ul className="items-stretch hidden space-x-6 lg:flex">
+          <ul className="items-stretch hidden space-x-7 lg:flex">
             {links.map((item: NavLink) => (
               <li key={item.id}>
                 <NavigationLink {...item} />

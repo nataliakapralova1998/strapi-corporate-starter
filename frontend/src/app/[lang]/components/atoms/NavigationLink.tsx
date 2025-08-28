@@ -25,7 +25,7 @@ export default function NavigationLink({
     <Link
       href={url}
       className={`relative inline-block w-fit text-text text-sm font-light pb-1 ${
-        isActive ? "border-b border-text" : "border-none"
+        isActive ? "border-b-2 border-text" : "border-none"
       }`}
     >
       {text}

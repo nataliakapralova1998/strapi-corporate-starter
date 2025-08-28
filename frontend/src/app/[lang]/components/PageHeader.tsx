@@ -11,7 +11,7 @@ export default function PageHeader({ heading, text }: PageHeaderProps) {
           {text}
         </span>
       )}
-      <h2>{heading}</h2>
+      <h3>{heading}</h3>
     </div>
   );
 }
