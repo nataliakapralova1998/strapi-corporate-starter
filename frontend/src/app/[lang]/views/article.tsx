@@ -34,7 +34,7 @@ interface Article {
     };
 }
 
-export default function Post({ data }: { data: Article }) {
+export default function ArticleView({ data }: { data: Article }) {
     const { title, description, publishedAt, cover, authorsBio } = data.attributes;
     const author = authorsBio.data?.attributes;
     const imageUrl = getStrapiMedia(cover.data?.attributes.url);
@@ -77,4 +77,4 @@ export default function Post({ data }: { data: Article }) {
             </div>
         </article>
     );
-}
+} 
