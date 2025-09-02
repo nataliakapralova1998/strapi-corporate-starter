@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Container from "../components/atoms/Container";
 import Stack from "../components/atoms/Stack";
-import BlogListItem, { BlogListItemArticle } from "../components/BlogListItem";
+import BlogListItem, { BlogListItemArticle } from "../components/molecules/BlogListItem";
 import Row from "../components/atoms/Row";
 
 interface Article extends BlogListItemArticle {}

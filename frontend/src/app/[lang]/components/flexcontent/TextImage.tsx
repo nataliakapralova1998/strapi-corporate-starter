@@ -4,7 +4,7 @@ import { getStrapiMedia } from "../../utils/api-helpers";
 import Button, { ButtonValues } from "../atoms/Button";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import PageHeader from "../PageHeader";
+import PageHeader from "../molecules/PageHeader";
 
 interface TextImageProps {
   data: {

@@ -1,4 +1,4 @@
-import FormSubmit from "../FormSubmit";
+import FormSubmit from "../molecules/FormSubmit";
 import Container from "../atoms/Container";
 
 interface EmailProps {

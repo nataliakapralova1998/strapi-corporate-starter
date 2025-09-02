@@ -4,11 +4,11 @@ import Link from "next/link";
 import { CgWebsite } from "react-icons/cg";
 import { FaDiscord } from "react-icons/fa";
 import { AiFillTwitterCircle, AiFillYoutube } from "react-icons/ai";
-import Logo from "./atoms/Logo";
-import NavigationLink from "./atoms/NavigationLink";
-import Stack from "./atoms/Stack";
-import FormSubmit from "./FormSubmit";
-import Container from "./atoms/Container";
+import Logo from "../atoms/Logo";
+import NavigationLink from "../atoms/NavigationLink";
+import Stack from "../atoms/Stack";
+import FormSubmit from "../molecules/FormSubmit";
+import Container from "../atoms/Container";
 
 interface FooterLink {
   id: number;

@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../utils/fetch-api";
-import Loader from "../components/Loader";
+import Loader from "../components/molecules/Loader";
 import Blog from "../views/blog-list";
-import Pagination from "../components/Pagination";
+import Pagination from "../components/molecules/Pagination";
 
 interface Meta {
   pagination: {

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getStrapiMedia } from "../../utils/api-helpers";
 import Container from "../atoms/Container";
 import Stack from "../atoms/Stack";
-import PageHeader from "../PageHeader";
+import PageHeader from "../molecules/PageHeader";
 
 interface Testimonial {
   text: string;

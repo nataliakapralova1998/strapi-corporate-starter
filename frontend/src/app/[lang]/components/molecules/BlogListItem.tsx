@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getStrapiMedia, formatDate } from "../utils/api-helpers";
+import { getStrapiMedia, formatDate } from "../../utils/api-helpers";
 
 export interface BlogListItemArticle {
   id: number;

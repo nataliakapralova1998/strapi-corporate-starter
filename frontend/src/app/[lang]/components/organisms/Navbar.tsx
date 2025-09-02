@@ -1,12 +1,12 @@
 "use client";
-import Logo from "./atoms/Logo";
+import Logo from "../atoms/Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
-import Button from "./atoms/Button";
-import NavigationLink from "./atoms/NavigationLink";
+import Button from "../atoms/Button";
+import NavigationLink from "../atoms/NavigationLink";
 
 interface NavLink {
   id: number;

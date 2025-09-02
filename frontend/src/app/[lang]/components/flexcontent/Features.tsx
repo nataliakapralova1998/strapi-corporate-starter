@@ -2,7 +2,7 @@
 
 import Container from "../atoms/Container";
 import Stack from "../atoms/Stack";
-import PageHeader from "../PageHeader";
+import PageHeader from "../molecules/PageHeader";
 import Button from "../atoms/Button";
 
 interface FeaturesProps {

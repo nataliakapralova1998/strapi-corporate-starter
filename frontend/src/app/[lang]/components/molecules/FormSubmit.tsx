@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { getStrapiURL } from "../utils/api-helpers";
+import { getStrapiURL } from "../../utils/api-helpers";
 import { ArrowRight } from "lucide-react";
 
 export default function FormSubmit({

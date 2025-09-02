@@ -1,4 +1,4 @@
-import LangRedirect from "./components/LangRedirect";
+import LangRedirect from "./components/molecules/LangRedirect";
 import componentResolver from "./utils/component-resolver";
 import { getPageBySlug } from "@/app/[lang]/utils/get-page-by-slug";
 

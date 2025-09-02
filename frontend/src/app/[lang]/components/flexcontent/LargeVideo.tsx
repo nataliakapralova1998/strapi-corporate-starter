@@ -1,4 +1,4 @@
-import PageHeader from "../PageHeader";
+import PageHeader from "../molecules/PageHeader";
 import Container from "../atoms/Container";
 import Stack from "../atoms/Stack";
 

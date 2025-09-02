@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Container from "../atoms/Container";
 import Stack from "../atoms/Stack";
-import PageHeader from "../PageHeader";
+import PageHeader from "../molecules/PageHeader";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
