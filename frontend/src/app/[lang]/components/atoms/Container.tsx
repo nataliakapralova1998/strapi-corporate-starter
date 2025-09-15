@@ -11,7 +11,7 @@ const Container = ({
   className,
 }: PropsWithChildren<ContainerProps>) => {
   return (
-    <div className={mergeClassNames("container p-4 md:p-0 mx-auto", className)}>
+    <div className={mergeClassNames("container p-4 lg:p-0 mx-auto", className)}>
       {children}
     </div>
   );

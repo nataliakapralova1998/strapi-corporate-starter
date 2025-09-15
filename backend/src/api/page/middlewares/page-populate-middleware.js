@@ -4,6 +4,12 @@
  * `page-populate-middleware` middleware
  */
 
+const mediaFields = ["url", "alternativeText", "caption", "width", "height"];
+
+const mediaWithFields = () => ({
+  fields: mediaFields,
+});
+
 const populate = {
   contentSections: {
     populate: {
@@ -11,47 +17,64 @@ const populate = {
       files: "*",
       file: "*",
       media: "*",
+
+      // Buttons & text
       button: {
-        fields: ["text", "url", "type", "newTab"]
-      },
-      picture: {
-        fields: ["url", "alternativeText", "caption", "width", "height"],
+        fields: ["text", "url", "type", "newTab"],
       },
       buttons: {
         populate: true,
       },
-      richText: { populate: { fields: ["body"] } },
-      feature: {
+      submitButton: {
+        populate: true,
+      },
+      richText: {
         populate: {
-          fields: ["title", "description", "showLink", "newTab", "url", "text"],
-          media: {
-            fields: ["url", "alternativeText", "caption", "width", "height"],
-          },
+          fields: ["body"],
+        },
+      },
+      faq_items: {
+        populate: true,
+      },
+      // Media (unified)
+      picture: mediaWithFields(),
+      blogs: {
+        populate: {
+          media: mediaWithFields(),
         },
       },
       testimonials: {
         populate: {
-          picture: {
-            fields: ["url", "alternativeText", "caption", "width", "height"],
-          },
+          picture: mediaWithFields(),
+        },
+      },
+      feature: {
+        populate: {
+          fields: [
+            "title",
+            "description",
+            "showLink",
+            "newTab",
+            "url",
+            "text",
+          ],
+          media: mediaWithFields(),
         },
       },
       plans: {
         populate: ["product_features"],
       },
-      submitButton: {
-        populate: true,
-      },
     },
   },
   seo: {
     fields: ["metaTitle", "metaDescription"],
-    populate: { shareImage: true },
+    populate: {
+      shareImage: true,
+    },
   },
 };
 
 module.exports = (config, { strapi }) => {
-  // Add your own logic here.
   return async (ctx, next) => {
     ctx.query = {
       populate,

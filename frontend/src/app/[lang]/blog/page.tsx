@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { fetchAPI } from "../utils/fetch-api";
-
-import Loader from "../components/Loader";
+import Loader from "../components/molecules/Loader";
 import Blog from "../views/blog-list";
-import PageHeader from "../components/PageHeader";
+import Pagination from "../components/molecules/Pagination";
 
 interface Meta {
   pagination: {
@@ -41,12 +40,7 @@ export default function Profile() {
       const options = { headers: { Authorization: `Bearer ${token}` } };
       const responseData = await fetchAPI(path, urlParamsObject, options);
 
-      if (start === 0) {
-        setData(responseData.data);
-      } else {
-        setData((prevData: any[]) => [...prevData, ...responseData.data]);
-      }
-
+      setData(responseData.data);
       setMeta(responseData.meta);
     } catch (error) {
       console.error(error);
@@ -55,10 +49,11 @@ export default function Profile() {
     }
   }, []);
 
-  function loadMorePosts(): void {
-    const nextPosts = meta!.pagination.start + meta!.pagination.limit;
-    fetchData(nextPosts, Number(process.env.NEXT_PUBLIC_PAGE_LIMIT));
-  }
+  const onPageChange = (page: number) => {
+    const limit = Number(process.env.NEXT_PUBLIC_PAGE_LIMIT);
+    const start = (page - 1) * limit;
+    fetchData(start, limit);
+  };
 
   useEffect(() => {
     fetchData(0, Number(process.env.NEXT_PUBLIC_PAGE_LIMIT));
@@ -66,26 +61,19 @@ export default function Profile() {
 
   if (isLoading) return <Loader />;
 
+  const total = meta!.pagination.total;
+  const limit = meta!.pagination.limit;
+  const start = meta!.pagination.start;
+  console.log(limit);
+
   return (
     <div>
-      <div className="my-6">
-        <PageHeader heading="Checkout Something Cool" text="Our blog" />{" "}
-      </div>
       <Blog data={data}>
-        {/* pagination */}
-        {meta!.pagination.start + meta!.pagination.limit <
-          meta!.pagination.total && (
-          <div className="flex justify-center">
-            <button
-              type="button"
-              className="px-6 py-3 text-sm rounded-lg hover:underline bg-gray-900  text-gray-400"
-              onClick={loadMorePosts}
-            >
-              Load more posts...
-            </button>
+        {total > limit && (
+          <div className="flex justify-center mt-8">
+            <Pagination total={total} limit={limit} start={start} onPageChange={onPageChange} />
           </div>
         )}
-        {/* pagination */}
       </Blog>
     </div>
   );

@@ -1067,7 +1067,9 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.pricing',
         'sections.lead-form',
         'sections.features',
+        'sections.faq',
         'sections.text-image',
+        'sections.blog-articles',
         'shared.rich-text',
         'shared.slider',
         'shared.image'

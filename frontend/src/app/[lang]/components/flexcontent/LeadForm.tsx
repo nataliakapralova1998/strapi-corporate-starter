@@ -1,4 +1,4 @@
-import FormSubmit from "../FormSubmit";
+import FormSubmit from "../molecules/FormSubmit";
 import Container from "../atoms/Container";
 
 interface EmailProps {
@@ -14,13 +14,13 @@ interface EmailProps {
 
 export default function Email({ data }: { data: EmailProps }) {
   return (
-    <section className="bg-[#eae6df] py-16">
+  <section className="bg-accent py-16 md:py-40">
       <Container>
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-serif font-semibold text-gray-800 mb-4">
+        <div className="max-w-2xl  space-y-2 md:space-y-10 mx-auto text-center">
+          <h2>
             {data.title}
           </h2>
-          <p className="text-lg text-gray-600 mb-10">{data.description}</p>
+          <p className="mb-10">{data.description}</p>
           <FormSubmit placeholder={data.emailPlaceholder} />
         </div>
       </Container>

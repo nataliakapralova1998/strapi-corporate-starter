@@ -169,17 +169,6 @@ export interface SectionsHero extends Schema.Component {
   };
 }
 
-export interface SectionsHeading extends Schema.Component {
-  collectionName: 'components_sections_headings';
-  info: {
-    displayName: 'Heading';
-  };
-  attributes: {
-    heading: Attribute.String & Attribute.Required;
-    description: Attribute.String;
-  };
-}
-
 export interface SectionsFeatures extends Schema.Component {
   collectionName: 'components_layout_features';
   info: {
@@ -217,18 +206,37 @@ export interface SectionsFeatureColumnsGroup extends Schema.Component {
   };
 }
 
-export interface SectionsBottomActions extends Schema.Component {
-  collectionName: 'components_slices_bottom_actions';
+export interface SectionsFaq extends Schema.Component {
+  collectionName: 'components_sections_faqs';
   info: {
-    name: 'BottomActions';
-    displayName: 'Bottom actions';
-    icon: 'angle-double-right';
+    displayName: 'FAQ';
+    icon: 'grid';
+  };
+  attributes: {
+    title: Attribute.String;
+    faq_items: Attribute.Component<'elements.faq-item', true>;
+  };
+}
+
+export interface SectionsBlogArticles extends Schema.Component {
+  collectionName: 'components_sections_blog_articles';
+  info: {
+    displayName: 'Blog Articles';
+    icon: 'grid';
     description: '';
   };
   attributes: {
     title: Attribute.String;
-    buttons: Attribute.Component<'links.button-link', true>;
-    description: Attribute.Text;
+    linkText: Attribute.String;
+    linkUrl: Attribute.String;
+    blogs: Attribute.Component<'elements.blog-item', true> &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 3;
+        },
+        number
+      >;
   };
 }
 
@@ -259,6 +267,53 @@ export interface MetaMetadata extends Schema.Component {
   attributes: {
     metaTitle: Attribute.String & Attribute.Required;
     metaDescription: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface LayoutNavbar extends Schema.Component {
+  collectionName: 'components_layout_navbars';
+  info: {
+    name: 'Navbar';
+    displayName: 'Navbar';
+    icon: 'map-signs';
+    description: '';
+  };
+  attributes: {
+    links: Attribute.Component<'links.link', true>;
+    button: Attribute.Component<'links.button-link'>;
+    navbarLogo: Attribute.Component<'layout.logo'>;
+  };
+}
+
+export interface LayoutLogo extends Schema.Component {
+  collectionName: 'components_layout_logos';
+  info: {
+    displayName: 'Logo';
+    description: '';
+  };
+  attributes: {
+    logoImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    logoText: Attribute.String;
+  };
+}
+
+export interface LayoutFooter extends Schema.Component {
+  collectionName: 'components_layout_footers';
+  info: {
+    displayName: 'Footer';
+    description: '';
+  };
+  attributes: {
+    footerLogo: Attribute.Component<'layout.logo'>;
+    menuLinks: Attribute.Component<'links.link', true>;
+    legalLinks: Attribute.Component<'links.link', true>;
+    socialLinks: Attribute.Component<'links.social-link', true>;
+    categories: Attribute.Relation<
+      'layout.footer',
+      'oneToMany',
+      'api::category.category'
+    >;
   };
 }
 
@@ -318,53 +373,6 @@ export interface LinksButtonLink extends Schema.Component {
     newTab: Attribute.Boolean & Attribute.DefaultTo<false>;
     text: Attribute.String;
     type: Attribute.Enumeration<['primary', 'secondary']>;
-  };
-}
-
-export interface LayoutNavbar extends Schema.Component {
-  collectionName: 'components_layout_navbars';
-  info: {
-    name: 'Navbar';
-    displayName: 'Navbar';
-    icon: 'map-signs';
-    description: '';
-  };
-  attributes: {
-    links: Attribute.Component<'links.link', true>;
-    button: Attribute.Component<'links.button-link'>;
-    navbarLogo: Attribute.Component<'layout.logo'>;
-  };
-}
-
-export interface LayoutLogo extends Schema.Component {
-  collectionName: 'components_layout_logos';
-  info: {
-    displayName: 'Logo';
-    description: '';
-  };
-  attributes: {
-    logoImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
-    logoText: Attribute.String;
-  };
-}
-
-export interface LayoutFooter extends Schema.Component {
-  collectionName: 'components_layout_footers';
-  info: {
-    displayName: 'Footer';
-    description: '';
-  };
-  attributes: {
-    footerLogo: Attribute.Component<'layout.logo'>;
-    menuLinks: Attribute.Component<'links.link', true>;
-    legalLinks: Attribute.Component<'links.link', true>;
-    socialLinks: Attribute.Component<'links.social-link', true>;
-    categories: Attribute.Relation<
-      'layout.footer',
-      'oneToMany',
-      'api::category.category'
-    >;
   };
 }
 
@@ -436,6 +444,17 @@ export interface ElementsLogos extends Schema.Component {
   };
 }
 
+export interface ElementsHeading extends Schema.Component {
+  collectionName: 'components_sections_headings';
+  info: {
+    displayName: 'Heading';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    description: Attribute.String;
+  };
+}
+
 export interface ElementsFooterSection extends Schema.Component {
   collectionName: 'components_links_footer_sections';
   info: {
@@ -496,6 +515,19 @@ export interface ElementsFeatureColumn extends Schema.Component {
   };
 }
 
+export interface ElementsFaqItem extends Schema.Component {
+  collectionName: 'components_elements_faq_items';
+  info: {
+    displayName: 'faq-item';
+    icon: 'folder';
+    description: '';
+  };
+  attributes: {
+    question: Attribute.String & Attribute.Required;
+    answer: Attribute.RichText;
+  };
+}
+
 export interface ElementsColorConfig extends Schema.Component {
   collectionName: 'components_elements_color_configs';
   info: {
@@ -524,6 +556,33 @@ export interface ElementsColorConfig extends Schema.Component {
   };
 }
 
+export interface ElementsBottomActions extends Schema.Component {
+  collectionName: 'components_slices_bottom_actions';
+  info: {
+    name: 'BottomActions';
+    displayName: 'Bottom actions';
+    icon: 'angle-double-right';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    buttons: Attribute.Component<'links.button-link', true>;
+    description: Attribute.Text;
+  };
+}
+
+export interface ElementsBlogItem extends Schema.Component {
+  collectionName: 'components_elements_blog_items';
+  info: {
+    displayName: 'blog-item';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+    media: Attribute.Media<'images'> & Attribute.Required;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -539,29 +598,33 @@ declare module '@strapi/types' {
       'sections.lead-form': SectionsLeadForm;
       'sections.large-video': SectionsLargeVideo;
       'sections.hero': SectionsHero;
-      'sections.heading': SectionsHeading;
       'sections.features': SectionsFeatures;
       'sections.feature-rows-group': SectionsFeatureRowsGroup;
       'sections.feature-columns-group': SectionsFeatureColumnsGroup;
-      'sections.bottom-actions': SectionsBottomActions;
+      'sections.faq': SectionsFaq;
+      'sections.blog-articles': SectionsBlogArticles;
       'sections.avatar-hero': SectionsAvatarHero;
       'meta.metadata': MetaMetadata;
+      'layout.navbar': LayoutNavbar;
+      'layout.logo': LayoutLogo;
+      'layout.footer': LayoutFooter;
       'links.social-link': LinksSocialLink;
       'links.link': LinksLink;
       'links.button': LinksButton;
       'links.button-link': LinksButtonLink;
-      'layout.navbar': LayoutNavbar;
-      'layout.logo': LayoutLogo;
-      'layout.footer': LayoutFooter;
       'elements.testimonial': ElementsTestimonial;
       'elements.plan': ElementsPlan;
       'elements.notification-banner': ElementsNotificationBanner;
       'elements.logos': ElementsLogos;
+      'elements.heading': ElementsHeading;
       'elements.footer-section': ElementsFooterSection;
       'elements.feature': ElementsFeature;
       'elements.feature-row': ElementsFeatureRow;
       'elements.feature-column': ElementsFeatureColumn;
+      'elements.faq-item': ElementsFaqItem;
       'elements.color-config': ElementsColorConfig;
+      'elements.bottom-actions': ElementsBottomActions;
+      'elements.blog-item': ElementsBlogItem;
     }
   }
 }
