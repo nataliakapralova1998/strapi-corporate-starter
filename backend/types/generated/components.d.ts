@@ -270,6 +270,53 @@ export interface MetaMetadata extends Schema.Component {
   };
 }
 
+export interface LayoutNavbar extends Schema.Component {
+  collectionName: 'components_layout_navbars';
+  info: {
+    name: 'Navbar';
+    displayName: 'Navbar';
+    icon: 'map-signs';
+    description: '';
+  };
+  attributes: {
+    links: Attribute.Component<'links.link', true>;
+    button: Attribute.Component<'links.button-link'>;
+    navbarLogo: Attribute.Component<'layout.logo'>;
+  };
+}
+
+export interface LayoutLogo extends Schema.Component {
+  collectionName: 'components_layout_logos';
+  info: {
+    displayName: 'Logo';
+    description: '';
+  };
+  attributes: {
+    logoImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
+    logoText: Attribute.String;
+  };
+}
+
+export interface LayoutFooter extends Schema.Component {
+  collectionName: 'components_layout_footers';
+  info: {
+    displayName: 'Footer';
+    description: '';
+  };
+  attributes: {
+    footerLogo: Attribute.Component<'layout.logo'>;
+    menuLinks: Attribute.Component<'links.link', true>;
+    legalLinks: Attribute.Component<'links.link', true>;
+    socialLinks: Attribute.Component<'links.social-link', true>;
+    categories: Attribute.Relation<
+      'layout.footer',
+      'oneToMany',
+      'api::category.category'
+    >;
+  };
+}
+
 export interface LinksSocialLink extends Schema.Component {
   collectionName: 'components_links_social_links';
   info: {
@@ -326,53 +373,6 @@ export interface LinksButtonLink extends Schema.Component {
     newTab: Attribute.Boolean & Attribute.DefaultTo<false>;
     text: Attribute.String;
     type: Attribute.Enumeration<['primary', 'secondary']>;
-  };
-}
-
-export interface LayoutNavbar extends Schema.Component {
-  collectionName: 'components_layout_navbars';
-  info: {
-    name: 'Navbar';
-    displayName: 'Navbar';
-    icon: 'map-signs';
-    description: '';
-  };
-  attributes: {
-    links: Attribute.Component<'links.link', true>;
-    button: Attribute.Component<'links.button-link'>;
-    navbarLogo: Attribute.Component<'layout.logo'>;
-  };
-}
-
-export interface LayoutLogo extends Schema.Component {
-  collectionName: 'components_layout_logos';
-  info: {
-    displayName: 'Logo';
-    description: '';
-  };
-  attributes: {
-    logoImg: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Attribute.Required;
-    logoText: Attribute.String;
-  };
-}
-
-export interface LayoutFooter extends Schema.Component {
-  collectionName: 'components_layout_footers';
-  info: {
-    displayName: 'Footer';
-    description: '';
-  };
-  attributes: {
-    footerLogo: Attribute.Component<'layout.logo'>;
-    menuLinks: Attribute.Component<'links.link', true>;
-    legalLinks: Attribute.Component<'links.link', true>;
-    socialLinks: Attribute.Component<'links.social-link', true>;
-    categories: Attribute.Relation<
-      'layout.footer',
-      'oneToMany',
-      'api::category.category'
-    >;
   };
 }
 
@@ -605,13 +605,13 @@ declare module '@strapi/types' {
       'sections.blog-articles': SectionsBlogArticles;
       'sections.avatar-hero': SectionsAvatarHero;
       'meta.metadata': MetaMetadata;
+      'layout.navbar': LayoutNavbar;
+      'layout.logo': LayoutLogo;
+      'layout.footer': LayoutFooter;
       'links.social-link': LinksSocialLink;
       'links.link': LinksLink;
       'links.button': LinksButton;
       'links.button-link': LinksButtonLink;
-      'layout.navbar': LayoutNavbar;
-      'layout.logo': LayoutLogo;
-      'layout.footer': LayoutFooter;
       'elements.testimonial': ElementsTestimonial;
       'elements.plan': ElementsPlan;
       'elements.notification-banner': ElementsNotificationBanner;

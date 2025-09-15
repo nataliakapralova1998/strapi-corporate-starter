@@ -78,43 +78,36 @@
 
 /* Headers */
 .rich-text h1 {
-  @apply text-4xl font-bold mb-4;
-  color: rgb(var(--primary) / 0.8);
+  @apply text-4xl font-bold mb-4 text-text;
 }
 
 .rich-text h2 {
-  @apply text-3xl font-bold mb-4;
-  color: rgb(var(--primary) / 0.8);
+  @apply text-3xl font-bold mb-4 text-text;
 }
 
 .rich-text h3 {
-  @apply text-2xl font-bold mb-4;
-  color: rgb(var(--primary) / 0.8);
+  @apply text-2xl font-bold mb-4 text-text;
 }
 
 .rich-text h4 {
-  @apply text-xl font-bold mb-4;
-  color: rgb(var(--primary) / 0.8);
+  @apply text-xl font-bold mb-4 text-text;
 }
 
 .rich-text h5 {
-  @apply text-lg font-bold mb-4;
-  color: rgb(var(--primary) / 0.8);
+  @apply text-lg font-bold mb-4 text-text;
 }
 
 .rich-text h6 {
-  @apply text-base font-bold mb-4;
-  color: rgb(var(--primary) / 0.2);
+  @apply text-base font-bold mb-4 text-text;
 }
 
 /* Horizontal rules */
 .rich-text hr {
-  @apply border-gray-300 my-8;
+  @apply border-muted my-8;
 }
 
 .rich-text a {
-  @apply underline;
-  color: rgb(var(--primary) / 0.8);
+  @apply underline text-text;
 }
 
 /* Typographic replacements */
@@ -137,16 +130,16 @@
 
 /* Blockquotes */
 .rich-text blockquote {
-  @apply border-l-4 border-gray-400 pl-4 py-2 mb-4;
+  @apply border-l-4 border-muted pl-4 py-2 mb-4 text-text bg-background;
 }
 
 /* Lists */
 .rich-text ul {
-  @apply list-disc pl-4 mb-4;
+  @apply list-disc pl-4 mb-4 text-text;
 }
 
 .rich-text ol {
-  @apply list-decimal pl-4 mb-4;
+  @apply list-decimal pl-4 mb-4 text-text;
 }
 
 .rich-text li {
@@ -163,24 +156,24 @@
 
 /* Code blocks */
 .rich-text pre {
-  @apply font-mono bg-gray-900 text-gray-100 rounded p-4  my-6;
+  @apply font-mono bg-text text-background rounded p-4 my-6;
 }
 
 .rich-text code {
-  @apply font-mono bg-gray-900 text-gray-100 rounded px-2 py-1;
+  @apply font-mono bg-text text-background rounded px-2 py-1;
 }
 
 /* Tables */
 .rich-text table {
-  @apply w-full border-collapse border-gray-300 my-6;
+  @apply w-full border-collapse border-muted my-6 text-text;
 }
 
 .rich-text th {
-  @apply bg-gray-900 text-left py-2 px-4 font-semibold border-b border-gray-300;
+  @apply bg-text text-background text-left py-2 px-4 font-semibold border-b border-muted;
 }
 
 .rich-text td {
-  @apply py-2 px-4 border-b border-gray-300;
+  @apply py-2 px-4 border-b border-muted;
 }
 
 /* Images */

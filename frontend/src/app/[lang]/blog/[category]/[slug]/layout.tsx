@@ -1,4 +1,4 @@
-import ArticleSelect from "@/app/[lang]/components/molecules/ArticleSelect";
+// import ArticleSelect from "@/app/[lang]/components/molecules/ArticleSelect";
 import { fetchAPI } from "@/app/[lang]/utils/fetch-api";
 
 async function fetchSideMenuData(filter: string) {
@@ -69,21 +69,12 @@ export default async function LayoutRoute({
     category: string;
   };
 }) {
-  const { category } = params;
-  const { categories, articles } = (await fetchSideMenuData(category)) as Data;
+  // const { category } = params;
+  // const { categories, articles } = (await fetchSideMenuData(category)) as Data;
 
   return (
-    <section className="container p-8 mx-auto space-y-6 sm:space-y-12">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4">
-        <div className="col-span-2">{children}</div>
-        <aside>
-          <ArticleSelect
-            categories={categories}
-            articles={articles}
-            params={params}
-          />
-        </aside>
-      </div>
+    <section>
+      <div> {children} </div>
     </section>
   );
 }
@@ -108,6 +99,9 @@ export async function generateStaticParams() {
           slug: string;
         };
       };
-    }) => ({ slug: article.attributes.slug, category: article.attributes.category.slug })
+    }) => ({
+      slug: article.attributes.slug,
+      category: article.attributes.category.slug,
+    })
   );
 }
