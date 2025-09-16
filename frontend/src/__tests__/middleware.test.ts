@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { middleware, getLocale } from '../middleware'
-import { i18n } from '../i18n-config'
+import { middleware } from '../middleware'
+import { i18n, normalizeLocale} from '../../i18n-config'
 
 // Mock @formatjs/intl-localematcher
 jest.mock('@formatjs/intl-localematcher', () => ({
@@ -53,7 +53,7 @@ describe('middleware', () => {
       const mockMatch = require('@formatjs/intl-localematcher').match
       mockMatch.mockReturnValue(i18n.defaultLocale)
       
-      const locale = getLocale(request as any)
+      const locale = normalizeLocale(request as any)
       expect(locale).toBe(i18n.defaultLocale)
     })
 
@@ -62,7 +62,7 @@ describe('middleware', () => {
       const mockMatch = require('@formatjs/intl-localematcher').match
       mockMatch.mockReturnValue('en')
       
-      const locale = getLocale(request as any)
+      const locale = normalizeLocale(request as any)
       expect(locale).toBe('en')
       expect(mockMatch).toHaveBeenCalled()
     })
@@ -74,7 +74,7 @@ describe('middleware', () => {
         throw new Error('Invalid language')
       })
       
-      const locale = getLocale(request as any)
+      const locale = normalizeLocale(request as any)
       expect(locale).toBe(i18n.defaultLocale)
     })
   })

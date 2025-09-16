@@ -1,80 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface SharedVideoEmbed extends Schema.Component {
-  collectionName: 'components_sections_video_embeds';
-  info: {
-    displayName: 'Video Embed';
-    description: '';
-  };
-  attributes: {
-    url: Attribute.String & Attribute.Required;
-  };
-}
-
-export interface SharedSlider extends Schema.Component {
-  collectionName: 'components_shared_sliders';
-  info: {
-    displayName: 'Slider';
-    icon: 'address-book';
-    description: '';
-  };
-  attributes: {
-    files: Attribute.Media<'images', true>;
-  };
-}
-
-export interface SharedSeo extends Schema.Component {
-  collectionName: 'components_shared_seos';
-  info: {
-    name: 'Seo';
-    icon: 'allergies';
-    displayName: 'Seo';
-    description: '';
-  };
-  attributes: {
-    metaTitle: Attribute.String & Attribute.Required;
-    metaDescription: Attribute.Text & Attribute.Required;
-    shareImage: Attribute.Media<'images'>;
-  };
-}
-
-export interface SharedRichText extends Schema.Component {
-  collectionName: 'components_shared_rich_texts';
-  info: {
-    displayName: 'Rich text';
-    icon: 'align-justify';
-    description: '';
-  };
-  attributes: {
-    body: Attribute.RichText;
-  };
-}
-
-export interface SharedMedia extends Schema.Component {
-  collectionName: 'components_shared_media';
-  info: {
-    displayName: 'Media';
-    icon: 'file-video';
-    description: '';
-  };
-  attributes: {
-    file: Attribute.Media<'images'>;
-  };
-}
-
-export interface SharedImage extends Schema.Component {
-  collectionName: 'components_shared_image';
-  info: {
-    displayName: 'Image';
-    icon: 'image';
-    description: 'Full width image with optional button';
-  };
-  attributes: {
-    media: Attribute.Media<'images'> & Attribute.Required;
-    button: Attribute.Component<'links.button-link'>;
-  };
-}
-
 export interface SectionsTextImage extends Schema.Component {
   collectionName: 'components_sections_text_image_s';
   info: {
@@ -583,15 +508,84 @@ export interface ElementsBlogItem extends Schema.Component {
   };
 }
 
+export interface SharedVideoEmbed extends Schema.Component {
+  collectionName: 'components_sections_video_embeds';
+  info: {
+    displayName: 'Video Embed';
+    description: '';
+  };
+  attributes: {
+    url: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface SharedSlider extends Schema.Component {
+  collectionName: 'components_shared_sliders';
+  info: {
+    displayName: 'Slider';
+    icon: 'address-book';
+    description: '';
+  };
+  attributes: {
+    files: Attribute.Media<'images', true>;
+  };
+}
+
+export interface SharedSeo extends Schema.Component {
+  collectionName: 'components_shared_seos';
+  info: {
+    name: 'Seo';
+    icon: 'allergies';
+    displayName: 'Seo';
+    description: '';
+  };
+  attributes: {
+    metaTitle: Attribute.String & Attribute.Required;
+    metaDescription: Attribute.Text & Attribute.Required;
+    shareImage: Attribute.Media<'images'>;
+  };
+}
+
+export interface SharedRichText extends Schema.Component {
+  collectionName: 'components_shared_rich_texts';
+  info: {
+    displayName: 'Rich text';
+    icon: 'align-justify';
+    description: '';
+  };
+  attributes: {
+    body: Attribute.RichText;
+  };
+}
+
+export interface SharedMedia extends Schema.Component {
+  collectionName: 'components_shared_media';
+  info: {
+    displayName: 'Media';
+    icon: 'file-video';
+    description: '';
+  };
+  attributes: {
+    file: Attribute.Media<'images'>;
+  };
+}
+
+export interface SharedImage extends Schema.Component {
+  collectionName: 'components_shared_image';
+  info: {
+    displayName: 'Image';
+    icon: 'image';
+    description: 'Full width image with optional button';
+  };
+  attributes: {
+    media: Attribute.Media<'images'> & Attribute.Required;
+    button: Attribute.Component<'links.button-link'>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'shared.video-embed': SharedVideoEmbed;
-      'shared.slider': SharedSlider;
-      'shared.seo': SharedSeo;
-      'shared.rich-text': SharedRichText;
-      'shared.media': SharedMedia;
-      'shared.image': SharedImage;
       'sections.text-image': SectionsTextImage;
       'sections.testimonials-group': SectionsTestimonialsGroup;
       'sections.pricing': SectionsPricing;
@@ -625,6 +619,12 @@ declare module '@strapi/types' {
       'elements.color-config': ElementsColorConfig;
       'elements.bottom-actions': ElementsBottomActions;
       'elements.blog-item': ElementsBlogItem;
+      'shared.video-embed': SharedVideoEmbed;
+      'shared.slider': SharedSlider;
+      'shared.seo': SharedSeo;
+      'shared.rich-text': SharedRichText;
+      'shared.media': SharedMedia;
+      'shared.image': SharedImage;
     }
   }
 }
