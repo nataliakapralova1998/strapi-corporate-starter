@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { getStrapiMedia, getStrapiURL } from "./utils/api-helpers";
 import { fetchAPI } from "./utils/fetch-api";
-import { i18n } from "../../../i18n-config";
+import { i18n, normalizeLocale } from '../../../i18n-config';
 import Footer from "./components/organisms/Footer";
 import Navbar from "./components/organisms/Navbar";
 import { getColorVariables } from "./utils/colors";
@@ -20,7 +20,7 @@ async function getGlobal(lang: string): Promise<any> {
   const path = `/global`;
   const options = { headers: { Authorization: `Bearer ${token}` } };
 
-  const urlParamsObject = {
+  const populate = {
     populate: [
       "metadata.shareImage",
       "favicon",
@@ -34,9 +34,21 @@ async function getGlobal(lang: string): Promise<any> {
       "footer.categories",
       "colors",
     ],
-    locale: lang,
-  };
-  return await fetchAPI(path, urlParamsObject, options);
+  } as any;
+
+  const locale = normalizeLocale(lang);
+
+  try {
+    const withLocale = await fetchAPI(path, { ...populate, locale }, options);
+    if (withLocale?.data) return withLocale;
+  } catch {}
+
+  try {
+    const withEn = await fetchAPI(path, { ...populate, locale: 'en' }, options);
+    if (withEn?.data) return withEn;
+  } catch {}
+
+  return await fetchAPI(path, populate, options);
 }
 
 export async function generateMetadata({
@@ -44,7 +56,8 @@ export async function generateMetadata({
 }: {
   params: { lang: string };
 }): Promise<Metadata> {
-  const meta = await getGlobal(params.lang);
+  const lang = normalizeLocale(params.lang);
+  const meta = await getGlobal(lang);
 
   if (!meta.data) return FALLBACK_SEO;
 
@@ -81,7 +94,8 @@ export default async function RootLayout({
   readonly children: React.ReactNode;
   readonly params: { lang: string };
 }) {
-  const global = await getGlobal(params.lang);
+  const lang = normalizeLocale(params.lang);
+  const global = await getGlobal(lang);
   // TODO: CREATE A CUSTOM ERROR PAGE
   if (!global.data) return null;
 
@@ -103,7 +117,7 @@ export default async function RootLayout({
     .join("\n");
 
   return (
-    <html lang={params.lang} className={`${ebGaramond.variable} ${manrope.variable}`}>
+    <html lang={lang} className={`${ebGaramond.variable} ${manrope.variable}`}>
       <head>
         <style>{`
           :root {
