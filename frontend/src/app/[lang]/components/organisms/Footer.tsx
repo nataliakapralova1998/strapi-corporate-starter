@@ -90,15 +90,15 @@ export default function Footer({
             }))}
           />
 
-          {/* Blog Categories */}
-          <FooterColumn
+          {/* optional Blog Categories */}
+          {/* <FooterColumn
             title="Blog"
             links={categoryLinks.map((cat) => ({
               id: cat.id,
               url: `/blog/${cat.attributes.slug}`,
               text: cat.attributes.name,
             }))}
-          />
+          /> */}
 
           {/* Newsletter */}
           <Stack gap="gap-4">

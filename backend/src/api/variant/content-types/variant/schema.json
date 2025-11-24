@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "variants",
+  "info": {
+    "singularName": "variant",
+    "pluralName": "variants",
+    "displayName": "Variant"
+  },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "sku": { "type": "string", "required": true, "unique": true },
+    "size": {
+      "type": "enumeration",
+      "enum": ["sz_60x90", "sz_120x180", "sz_160x230", "sz_200x300", "custom"],
+      "default": "sz_120x180"
+    },
+    "colorway": { "type": "string" },
+    "priceDelta": { "type": "decimal", "default": 0 },
+    "stock": { "type": "integer" },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "variants"
+    }
+  }
+}
