@@ -64,7 +64,7 @@ export default function TextImage({ data }: TextImageProps) {
         >
           <div className="py-12 px-5 lg:py-32 lg:px-16">
             <PageHeader heading={data.title} text={data.subtitle} />
-            <div className="my-6">
+            <div className="my-6 space-y-4">
               <Markdown remarkPlugins={[remarkGfm]}>{data.text}</Markdown>
             </div>
             <div className="flex flex-col sm:flex-row sm:gap-4">

@@ -1034,6 +1034,42 @@ export interface ApiLeadFormSubmissionLeadFormSubmission
   };
 }
 
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    email: Attribute.Email & Attribute.Required;
+    status: Attribute.Enumeration<['pending', 'paid', 'failed']> &
+      Attribute.DefaultTo<'pending'>;
+    stripeSessionId: Attribute.String & Attribute.Required & Attribute.Unique;
+    currency: Attribute.String & Attribute.DefaultTo<'eur'>;
+    total: Attribute.Decimal;
+    lines: Attribute.JSON;
+    shippingAddress: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
@@ -1120,6 +1156,47 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::product.product', 'title'> & Attribute.Required;
+    description: Attribute.RichText;
+    basePrice: Attribute.Decimal & Attribute.Required;
+    images: Attribute.Media<undefined, true>;
+    variants: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::variant.variant'
+    >;
+    madeToOrder: Attribute.Boolean & Attribute.DefaultTo<true>;
+    leadTimeDays: Attribute.Integer & Attribute.DefaultTo<21>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductFeatureProductFeature extends Schema.CollectionType {
   collectionName: 'product_features';
   info: {
@@ -1151,6 +1228,48 @@ export interface ApiProductFeatureProductFeature extends Schema.CollectionType {
   };
 }
 
+export interface ApiVariantVariant extends Schema.CollectionType {
+  collectionName: 'variants';
+  info: {
+    singularName: 'variant';
+    pluralName: 'variants';
+    displayName: 'Variant';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    sku: Attribute.String & Attribute.Required & Attribute.Unique;
+    size: Attribute.Enumeration<
+      ['sz_60x90', 'sz_120x180', 'sz_160x230', 'sz_200x300', 'custom']
+    > &
+      Attribute.DefaultTo<'sz_120x180'>;
+    colorway: Attribute.String;
+    priceDelta: Attribute.Decimal & Attribute.DefaultTo<0>;
+    stock: Attribute.Integer;
+    product: Attribute.Relation<
+      'api::variant.variant',
+      'manyToOne',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::variant.variant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::variant.variant',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1174,8 +1293,11 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
       'api::lead-form-submission.lead-form-submission': ApiLeadFormSubmissionLeadFormSubmission;
+      'api::order.order': ApiOrderOrder;
       'api::page.page': ApiPagePage;
+      'api::product.product': ApiProductProduct;
       'api::product-feature.product-feature': ApiProductFeatureProductFeature;
+      'api::variant.variant': ApiVariantVariant;
     }
   }
 }
