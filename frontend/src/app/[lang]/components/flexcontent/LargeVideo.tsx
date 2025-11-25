@@ -29,7 +29,7 @@ export default function LargeVideo({ data }: { data: LargeVideoProps }) {
     <section className="py-12 lg:py-24">
       <Container>
         <Stack gap="gap-12"> 
-        <PageHeader heading={data.title}text={data.description} />
+        <PageHeader heading={data.title} text={data.description} />
         <div className="video-embed h-72 lg:h-[650px] overflow-hidden ">
           <iframe
             title="video"

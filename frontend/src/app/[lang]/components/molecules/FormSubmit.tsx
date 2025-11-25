@@ -14,7 +14,7 @@ export default function FormSubmit({
   const token = process.env.NEXT_PUBLIC_STRAPI_FORM_SUBMISSION_TOKEN;
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault(); // voorkom page reload
+    e.preventDefault();
 
     const res = await fetch(getStrapiURL() + "/api/lead-form-submissions", {
       method: "POST",

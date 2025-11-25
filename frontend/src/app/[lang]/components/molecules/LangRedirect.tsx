@@ -18,6 +18,7 @@ export default function LangRedirect() {
           <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
             <Link href="/en" className={renderButtonStyle("primary")}>
               Back To English
+              {/* @todo translation  */}
             </Link>
           </div>
         </div>

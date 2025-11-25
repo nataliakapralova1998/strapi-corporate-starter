@@ -11,7 +11,6 @@
       --color-secondary: #ffAEBC;
       --color-accent: #a0e7e5;
       --color-background: #faf8f4;
-      --color-surface: #ffffff;
       --color-text: #1e1e14;
       --color-muted: #666666;
     
@@ -20,7 +19,6 @@
       --secondary: 255 174 188;
       --accent: 160 231 229;
       --background: 250 248 244;
-      --surface: 255 255 255;
       --text: 30 30 20;
       --muted: 102 102 102;
     }

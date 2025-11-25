@@ -5,9 +5,8 @@ import { fetchAPI } from "../utils/fetch-api";
 import { getStrapiURL } from "../utils/api-helpers";
 
 
-export const revalidate = 0; // dev fresh; voor prod bv 60
-
 export default async function ShopPage() {
+  
   const res = await fetchAPI("/products", {
     populate: {
       images: { fields: ["url", "alternativeText"] },
