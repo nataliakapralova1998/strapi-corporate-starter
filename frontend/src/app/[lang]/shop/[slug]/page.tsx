@@ -6,7 +6,7 @@ import ProductDetail from "../../views/product-detail";
 
 type PageProps = { params: { lang: string; slug: string } };
 
-export const revalidate = 0; // tijdens dev
+export const revalidate = 0; 
 
 export default async function ProductPage({ params }: PageProps) {
   const { slug } = params;
@@ -24,6 +24,5 @@ export default async function ProductPage({ params }: PageProps) {
   const item = res?.data?.[0];
   if (!item) return notFound();
 
-  // Strapi data is prima door te geven; client component cast 'm.
   return <ProductDetail product={item} lang={params.lang} />;
 }

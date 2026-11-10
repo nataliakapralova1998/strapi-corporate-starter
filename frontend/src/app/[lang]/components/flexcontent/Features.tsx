@@ -46,7 +46,6 @@ export default function Features({ data }: FeaturesProps) {
     <section className="bg-accent">
       <Container className="py-12 lg:py-24">
         <Stack
-          gap="gap-12"
           justifyContent="justify-center"
           alignItems="items-center"
         >

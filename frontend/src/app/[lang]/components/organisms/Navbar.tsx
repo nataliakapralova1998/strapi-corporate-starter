@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
-import Button from "../atoms/Button";
+import Button, { ButtonValues } from "../atoms/Button";
 import NavigationLink from "../atoms/NavigationLink";
 
 interface NavLink {
@@ -58,10 +58,12 @@ function MobileNavLink({ url, text, closeMenu }: MobileNavLink) {
 export default function Navbar({
   links,
   logoUrl,
+  button,
 }: {
   links: Array<NavLink>;
   logoUrl: string | null;
   logoText: string | null;
+  button: ButtonValues;
 }) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -135,13 +137,16 @@ export default function Navbar({
             </div>
           </Dialog.Panel>
         </Dialog>
-
-        <Button
-          type="secondary"
-          text="plan een gesprek"
-          className="hidden lg:block"
-          onClick={() => console.log("jow")}
-        />
+        {button && (
+          <Button
+            type={button.type}
+            text={button.text}
+            className="hidden lg:block"
+            onClick={() =>
+              window.open(button.url, button.newTab ? "_blank" : "_self")
+            }
+          />
+        )}
 
         <button
           className="p-4 lg:hidden"
