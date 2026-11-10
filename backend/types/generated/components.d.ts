@@ -75,6 +75,20 @@ export interface SharedImage extends Schema.Component {
   };
 }
 
+export interface MetaMetadata extends Schema.Component {
+  collectionName: 'components_meta_metadata';
+  info: {
+    name: 'Metadata';
+    displayName: 'Metadata';
+    icon: 'robot';
+    description: '';
+  };
+  attributes: {
+    metaTitle: Attribute.String & Attribute.Required;
+    metaDescription: Attribute.Text & Attribute.Required;
+  };
+}
+
 export interface SectionsTextImage extends Schema.Component {
   collectionName: 'components_sections_text_image_s';
   info: {
@@ -253,20 +267,6 @@ export interface SectionsAvatarHero extends Schema.Component {
     description: Attribute.Text & Attribute.Required;
     avatar: Attribute.Media<'images'> & Attribute.Required;
     buttons: Attribute.Component<'links.button-link', true>;
-  };
-}
-
-export interface MetaMetadata extends Schema.Component {
-  collectionName: 'components_meta_metadata';
-  info: {
-    name: 'Metadata';
-    displayName: 'Metadata';
-    icon: 'robot';
-    description: '';
-  };
-  attributes: {
-    metaTitle: Attribute.String & Attribute.Required;
-    metaDescription: Attribute.Text & Attribute.Required;
   };
 }
 
@@ -592,6 +592,7 @@ declare module '@strapi/types' {
       'shared.rich-text': SharedRichText;
       'shared.media': SharedMedia;
       'shared.image': SharedImage;
+      'meta.metadata': MetaMetadata;
       'sections.text-image': SectionsTextImage;
       'sections.testimonials-group': SectionsTestimonialsGroup;
       'sections.pricing': SectionsPricing;
@@ -604,7 +605,6 @@ declare module '@strapi/types' {
       'sections.faq': SectionsFaq;
       'sections.blog-articles': SectionsBlogArticles;
       'sections.avatar-hero': SectionsAvatarHero;
-      'meta.metadata': MetaMetadata;
       'layout.navbar': LayoutNavbar;
       'layout.logo': LayoutLogo;
       'layout.footer': LayoutFooter;
