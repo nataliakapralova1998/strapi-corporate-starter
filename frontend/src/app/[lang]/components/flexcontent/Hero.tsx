@@ -51,7 +51,7 @@ export default function Hero({ data }: HeroProps) {
             </div>
           </div>
         </div>
-        <div className="col-span-full lg:col-span-7 lg:col-start-7">
+        <div className="hidden lg:block col-span-full lg:col-span-7 lg:col-start-7">
           <Image
             src={imgUrl || ""}
             alt={

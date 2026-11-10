@@ -1,6 +1,6 @@
 import '@jest/globals'
 import { render } from '@testing-library/react'
-import LangRedirect from '../../app/[lang]/components/LangRedirect'
+import LangRedirect from '../../app/[lang]/components/molecules/LangRedirect'
 
 jest.mock('next/navigation', () => ({
   redirect: jest.fn(),

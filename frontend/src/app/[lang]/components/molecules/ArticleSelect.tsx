@@ -64,7 +64,7 @@ export default function ArticleSelect({
         </div>
 
         <div className="space-y-2">
-          <h4 className="text-lg font-semibold">Other Posts You May Like</h4>
+          <h4 className="text-lg font-semibold">Other Articles You May Like</h4>
           <ul className="ml-4 space-y-1 list-disc">
             {articles.map((article: Article) => {
               return (

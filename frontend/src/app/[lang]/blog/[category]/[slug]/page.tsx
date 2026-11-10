@@ -1,5 +1,5 @@
 import { fetchAPI } from '@/app/[lang]/utils/fetch-api';
-import Post from '@/app/[lang]/views/post';
+import ArticleView from '@/app/[lang]/views/article';
 import type { Metadata } from 'next';
 
 async function getPostBySlug(slug: string) {
@@ -51,11 +51,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-export default async function PostRoute({ params }: { params: { slug: string } }) {
+export default async function ArticleRoute({ params }: { params: { slug: string } }) {
     const { slug } = params;
     const data = await getPostBySlug(slug);
-    if (data.data.length === 0) return <h2>no post found</h2>;
-    return <Post data={data.data[0]} />;
+    if (data.data.length === 0) return <h2>no article found</h2>;
+    return <ArticleView data={data.data[0]} />;
 }
 
 export async function generateStaticParams() {
@@ -78,6 +78,6 @@ export async function generateStaticParams() {
                     slug: string;
                 };
             };
-        }) => ({ slug: article.attributes.slug, category: article.attributes.slug })
+        }) => ({ slug: article.attributes.slug, category: article.attributes.category.slug })
     );
 }

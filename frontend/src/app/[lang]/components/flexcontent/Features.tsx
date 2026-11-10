@@ -2,7 +2,7 @@
 
 import Container from "../atoms/Container";
 import Stack from "../atoms/Stack";
-import PageHeader from "../PageHeader";
+import PageHeader from "../molecules/PageHeader";
 import Button from "../atoms/Button";
 
 interface FeaturesProps {
@@ -25,7 +25,7 @@ interface Feature {
 
 function Feature({ title, description, showLink, newTab, url, text }: Feature) {
   return (
-    <Stack alignItems="items-center" justifyContent="justify-center">
+    <Stack className="text-center">
       <h3>{title}</h3>
       <p>{description}</p>
       {showLink && url && text && (

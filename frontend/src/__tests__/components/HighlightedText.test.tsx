@@ -1,6 +1,6 @@
 import '@jest/globals'
 import { render } from '@testing-library/react'
-import HighlightedText from '../../app/[lang]/components/HighlightedText'
+import HighlightedText from '../../app/[lang]/components/molecules/HighlightedText'
 
 describe('HighlightedText Component', () => {
   it('renders text with default tag', () => {

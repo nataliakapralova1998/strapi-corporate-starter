@@ -5,13 +5,13 @@ interface PageHeaderProps {
 
 export default function PageHeader({ heading, text }: PageHeaderProps) {
   return (
-    <div className="w-full text-center">
+    <div>
       {text && (
-        <span className="font-bold tracking-wider uppercase text-primary">
+        <span className="text-sm text-primary uppercase tracking-widest mb-2">
           {text}
         </span>
       )}
-      <h2>{heading}</h2>
+      <h3>{heading}</h3>
     </div>
   );
 }

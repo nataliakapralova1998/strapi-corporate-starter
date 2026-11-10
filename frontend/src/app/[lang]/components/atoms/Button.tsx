@@ -35,7 +35,7 @@ const Button: React.FC<ButtonValues> = ({
       onClick={onClick}
       className={`${renderButtonStyle(
         type
-      )} px-3 lg:px-8 py-3 text-base font-medium tracking-widest uppercase rounded-full transition-colors duration-300 ${className}`}
+      )} px-3 lg:px-8 py-3 text-sm tracking-widest uppercase rounded-full transition-colors duration-300 ${className}`}
     >
       {text}
     </button>

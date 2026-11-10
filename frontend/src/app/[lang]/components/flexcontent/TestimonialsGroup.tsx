@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getStrapiMedia } from "../../utils/api-helpers";
 import Container from "../atoms/Container";
 import Stack from "../atoms/Stack";
-import PageHeader from "../PageHeader";
+import PageHeader from "../molecules/PageHeader";
 
 interface Testimonial {
   text: string;
@@ -53,7 +53,7 @@ function Testimonial({ text, authorName, picture }: Readonly<Testimonial>) {
           <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
           <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
         </svg>
-        <p className="px-6 py-1 text-lg italic">{text}</p>
+        <p className="px-8 py-1 text-base italic">{text}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"

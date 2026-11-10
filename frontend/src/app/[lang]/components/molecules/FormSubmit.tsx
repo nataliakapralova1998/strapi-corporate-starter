@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { getStrapiURL } from "../utils/api-helpers";
+import { getStrapiURL } from "../../utils/api-helpers";
 import { ArrowRight } from "lucide-react";
 
 export default function FormSubmit({
@@ -29,14 +29,14 @@ export default function FormSubmit({
       return;
     }
 
-    setSuccessMessage("Email successfully submitted!");
+    setSuccessMessage("Gelukt!");
     setEmail("");
   }
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full max-w-md mx-auto mt-6 flex flex-col gap-4"
+      className="w-full max-w-md mx-auto flex flex-col gap-4"
     >
       {successMessage ? (
         <p>{successMessage}</p>

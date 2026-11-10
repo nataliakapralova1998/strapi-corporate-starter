@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_sections_blog_articles",
+  "info": {
+    "displayName": "Blog Articles",
+    "icon": "grid",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "linkText": {
+      "type": "string"
+    },
+    "linkUrl": {
+      "type": "string"
+    },
+    "blogs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.blog-item",
+      "max": 3,
+      "min": 1
+    }
+  }
+}

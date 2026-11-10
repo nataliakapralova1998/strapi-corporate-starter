@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import HighlightedText from "./HighlightedText";
-import { renderButtonStyle } from "./atoms/Button";
+import { renderButtonStyle } from "../atoms/Button";
 
 export default function LangRedirect() {
   return (

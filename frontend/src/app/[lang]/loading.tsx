@@ -1,4 +1,4 @@
-import Loader from './components/Loader';
+import Loader from './components/molecules/Loader';
 
 export default function RootLoading() {
     return <Loader />;
